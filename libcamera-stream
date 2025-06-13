@@ -1,0 +1,29 @@
+#!/sbin/openrc-run
+
+description="Libcamera Video Streaming Service"
+
+# The command to execute, wrapped with supervise-daemon for automatic restarts
+command="/usr/sbin/supervise-daemon"
+command_args="--start /usr/bin/libcamera-vid -- --config /etc/libcamera-stream.conf"
+command_user="root"
+
+# This will be the pidfile for the supervise-daemon process
+pidfile="/run/${RC_SVCNAME}.pid"
+
+# Automatically restart the service if it crashes
+# supervise-daemon handles this by default.
+# The following options can be used to configure the restart behavior.
+# --respawn-delay specifies the seconds to wait before restarting.
+# This is equivalent to RestartSec in the systemd unit.
+supervise_daemon_ops="--respawn-delay 15"
+
+depend() {
+    need net
+}
+
+# how to install on alpine
+# /etc/init.d/libcamera-stream
+# chmod +x /etc/init.d/libcamera-stream
+# rc-update add libcamera-stream default
+# rc-service libcamera-stream start
+# rc-service libcamera-stream status
