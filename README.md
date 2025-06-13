@@ -8,7 +8,7 @@ Create a libcamera service that streams to go2rtc
 
 | Filename  | Description |
 |---|---|
-| libcamera-stream.con | configuration file |
+| libcamera-stream.conf | configuration file |
 | libcamera-stream.service | systemd service for ubuntu |
 | libcamera-stream | rc-service for alpine |
 | go2rtc.yaml | configuration for go2rtc|
