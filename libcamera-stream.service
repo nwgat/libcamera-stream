@@ -1,0 +1,15 @@
+[Unit]
+Description=Libcamera Video Streaming Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/libcamera-vid --config /etc/libcamera-stream.conf
+Restart=always
+RestartSec=15
+User=root
+#Group=video
+# StandardOutput=journal # Uncomment to log stdout to journald
+# StandardError=journal  # Uncomment to log stderr to journald
+
+[Install]
+WantedBy=multi-user.target
